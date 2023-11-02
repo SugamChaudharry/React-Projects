@@ -4,10 +4,10 @@ import {useCurrencyInfo} from "./hooks";
 
 
 function App() {
-  const [amount, setAmount] = useState(0)
+  const [amount, setAmount] = useState()
   const [from, setFrom] = useState("usd")
   const [to, setTo] = useState("inr")
-  const [convertedAmount, setConvertedAmount] = useState(0)
+  const [convertedAmount, setConvertedAmount] = useState()
 
   const  currencyinfo = useCurrencyInfo(from)
   const options = Object.keys(currencyinfo)
@@ -24,7 +24,7 @@ function App() {
   }
 
   const BackgroundImage =
-    "https://images.pexels.com/photos/259915/pexels-photo-259915.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1";
+    "https://images.pexels.com/photos/1046159/pexels-photo-1046159.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1";
   return (
     <div
       className="w-full h-screen flex flex-wrap justify-center items-center bg-cover bg-no-repeat"
@@ -41,9 +41,10 @@ function App() {
             <div className="w-full mb-1">
               <InputBox
                 label="From"
-                amount={amount}
+                // amount={amount}
                 currencyoption={options}
                 onCurrencyChange={(currncy) => setAmount(amount)}
+                onAmountChange={(amount)=>setAmount(amount)}
                 selectCurrency={from}
               />
             </div>
@@ -61,7 +62,7 @@ function App() {
                 amount={convertedAmount}
                 currencyoption={options}
                 onCurrencyChange={(currncy) => setTo(currncy)}
-                selectCurrency={from}
+                selectCurrency={to}
                 amountDisable
               />
             </div>
