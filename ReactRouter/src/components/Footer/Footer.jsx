@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link } from 'react-router-dom';
+import { Link , NavLink } from 'react-router-dom';
 export default function Footer() {
   return (
     <footer className="bg-white border-y">
@@ -19,14 +19,48 @@ export default function Footer() {
               <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase">Resources</h2>
               <ul className="text-gray-500 font-medium">
                 <li className="mb-4">
-                  <Link to="/" className="hover:underline">
+                  <NavLink
+                    to="/"
+                    className={({ isActive }) =>
+                      `block py-2 pr-4 pl-3 duration-200
+                    ${isActive ? "text-orange-700" : "text-gray-700"}
+                    border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 hover:text-orange-700 lg:p-0 hover:underline`
+                    }>
                     Home
-                  </Link>
+                  </NavLink>
                 </li>
-                <li>
-                  <Link to="/about" className="hover:underline">
+                <li className="mb-4">
+                  <NavLink
+                    to="/about"
+                    className={({ isActive }) =>
+                      `block py-2 pr-4 pl-3 duration-200
+                    ${isActive ? "text-orange-700" : "text-gray-700"}
+                    border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 hover:text-orange-700 lg:p-0 hover:underline`
+                    }>
                     About
-                  </Link>
+                  </NavLink>
+                </li>
+                <li className="mb-4">
+                  <NavLink
+                    to="/contact"
+                    className={({ isActive }) =>
+                      `block py-2 pr-4 pl-3 duration-200
+                    ${isActive ? "text-orange-700" : "text-gray-700"}
+                    border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 hover:text-orange-700 lg:p-0 hover:underline`
+                    }>
+                    Contact
+                  </NavLink>
+                </li>
+                <li className="mb-4">
+                  <NavLink
+                    to="/github"
+                    className={({ isActive }) =>
+                      `block py-2 pr-4 pl-3 duration-200
+                    ${isActive ? "text-orange-700" : "text-gray-700"}
+                    border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 hover:text-orange-700 lg:p-0 hover:underline`
+                    }>
+                    GitHub
+                  </NavLink>
                 </li>
               </ul>
             </div>
@@ -35,7 +69,7 @@ export default function Footer() {
               <ul className="text-gray-500 font-medium">
                 <li className="mb-4">
                   <a
-                    href="https://github.com/hiteshchoudhary"
+                    href="https://github.com/SugamChaudharry"
                     className="hover:underline"
                     target="_blank"
                     rel="noreferrer">
@@ -71,7 +105,7 @@ export default function Footer() {
           <span className="text-sm text-gray-500 sm:text-center">
             © 2023
             <a href="https://hiteshchoudhary.com/" className="hover:underline">
-              hiteshchoudhary
+              SugamChaudhary
             </a>
             . All Rights Reserved.
           </span>
