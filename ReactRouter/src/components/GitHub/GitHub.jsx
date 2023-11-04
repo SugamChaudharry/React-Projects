@@ -71,7 +71,7 @@ function GitHub() {
               <p>LOCATION </p>
               <p>FOLLOWER </p>
               <p>FOLLOWING </p>
-              <p>API URL </p>
+              <p>GITHUB URL </p>
             </span>
             <span>
               <p>:</p>
