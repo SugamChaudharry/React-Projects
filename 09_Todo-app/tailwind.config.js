@@ -12,9 +12,13 @@ module.exports = withMT({
     extend: {
       colors: {
         "bg-dark": "#161722",
-        "bg-light": "#d2d3db",
+        "bg-light": "#ECF2FF",
+
         "card-dark": "#25273c",
-        "card-light": "#fafafa",
+        "card-light": "#E3DFFD",
+
+        "line-dark": "#005B41",
+        "line-light": "#88304E",
       },
       padding: {
         "c-padding": "1rem 0.8rem 1rem 0.8rem",

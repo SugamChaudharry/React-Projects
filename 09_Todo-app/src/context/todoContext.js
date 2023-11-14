@@ -11,10 +11,7 @@ export const TodoContext = createContext({
   addTodo: (newTodo) => {},
   Todochecked: (id) => {},
   updateTodo: (id , todo) => {},
-  deletedTodo: (id) => {},
-  isActive : (id) => {},
-  isCompleted : (id) =>{},
-  deleteCompleted : (id) => {}, 
+  deletedTodo: (id) => {}, 
 });
 
 export const useTodo = () => {

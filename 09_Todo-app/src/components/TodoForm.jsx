@@ -21,7 +21,7 @@ function TodoForm() {
   return (
     <div
       className={` w-full h-[4.49rem] bg-[ ${theme === "dark" ? "bg-card-dark" : "bg-card-light"}
-        flex items-center justify-center p-c-padding text-[14px] rounded-md
+        flex items-center justify-center p-c-padding text-[14px] rounded-md 
         `}>
       <input
         type="text"

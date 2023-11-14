@@ -1,4 +1,4 @@
-import React , {useEffect} from 'react'
+import React from 'react'
 import  useTheme  from '../context/themeContext';
 
 function ThemeBtn() {
@@ -11,16 +11,11 @@ function ThemeBtn() {
             darkMode()
         }
     }
-    const mystyle = {
-      background: "linear-gradient(40deg,#ff0080,#ff8c00 70%)",
-      height: "var(1.4em,1.4em)",
-      width: "var(1.4em,1.4em)",
-    };
   return (
-    <img
+    <img className='w-8'
       src={theme === "dark" ? "/images/icon-moon.svg" : "/images/icon-sun.svg"}
       alt="ThemeSwitecher"
-      onClick={ThemeSwitcher || theme === "dark"}
+      onClick={ThemeSwitcher}
     />
     
   );
