@@ -5,7 +5,7 @@ import { ThemeProvider } from "./context";
 import { TodoProvider } from "./context";
 
 function App() {
-// theme setup
+  // theme setup
   const [theme, SetTheme] = useState("dark");
 
   const lightMode = () => {
@@ -20,45 +20,42 @@ function App() {
     htmlEl.classList.add(theme);
   }, [theme]);
 
+  // Addtodo setup
+  const [todos, setTodos] = useState([]);
 
-// Addtodo setup
-  const [todos , setTodos] = useState([])
-
-  const addTodo = (todo)=>{ 
-    setTodos((prevTodo) => [ { id: Date.now(),...todo} ,...prevTodo])
+  const addTodo = (todo) => {
+    setTodos((prevTodo) => [{ id: Date.now(), ...todo }, ...prevTodo]);
   };
-  
-    useEffect(()=>{
-      const todos =  JSON.parse(localStorage.getItem("todos"));
-      if (todos && todos.length > 0) {
-        setTodos(todos);
-      }
-    },[])
-
-  useEffect(()=>{
-    localStorage.setItem("todos" , JSON.stringify(todos))
-  },[todos])
-  
-
-  const Todochecked = (id) => {
-    todos.forEach(todo => { 
-            if (todo.id === id) {
-              todo.completed = !todo.completed;              
-            }
-    })
-  };
-
-  const editTodo = (id , todo) => {
-    
+  const updateTodo = (id, todo) => {
+    setTodos((prev) => prev.map((prevTodo) => (prevTodo.id === id ? todo : prevTodo)));
   };
   const deletedTodo = (id) => {
-    setTodos(todos.filter((e) => e.id !== id))
+    setTodos(todos.filter((e) => e.id !== id));
   };
-  
+  const Todochecked = (id) => {
+    setTodos((prev) =>
+      prev.map((prevTodo) =>
+        prevTodo.id === id ? { ...prevTodo, completed: !prevTodo.completed } : prevTodo
+      )
+    );
+  };
+
+  useEffect(() => {
+    const todos = JSON.parse(localStorage.getItem("todos"));
+    if (todos && todos.length > 0) {
+      setTodos(todos);
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("todos", JSON.stringify(todos));
+  }, [todos]);
+
+
 
   return (
     <ThemeProvider value={{ theme, darkMode, lightMode }}>
-      <TodoProvider value={{ todos, addTodo, Todochecked, editTodo, deletedTodo }}>
+      <TodoProvider value={{ todos, addTodo, Todochecked, updateTodo, deletedTodo }}>
         <div className=" bg-bg-light dark:bg-bg-dark overflow-x-hidden  w-screen h-screen font-Josefin text-[14px]">
           <header className="w-full relative h-[230px] flex items-center justify-center z-[1]">
             <img
@@ -68,7 +65,7 @@ function App() {
               alt="banner"
               className="w-full absolute h-[270px] top-0 left-0 object-cover"
             />
-            
+
             {/* top card */}
             <div className=" w-[500px]  flex flex-col items-center justify-between z-[2]">
               <div className="w-full mb-5 mt-[5rem] flex items-center justify-between">
@@ -83,7 +80,7 @@ function App() {
           <main className=" w-full  flex flex-col  items-center justify-center  ">
             {todos.map((todo) => (
               <div key={todo.id} className="z-10 ">
-                <TodoList todo={todo} id={todo.id} />
+                <TodoList todo={todo} />
               </div>
             ))}
           </main>

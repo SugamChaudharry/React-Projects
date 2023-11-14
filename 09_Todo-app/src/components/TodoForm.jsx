@@ -5,9 +5,10 @@ import { useTodo } from "../context";
 function TodoForm() {
   const { theme} = useTheme();
   const {addTodo} = useTodo();
-
   const [todoMsg , setTodoMsg] = useState('')
+
   const add = (e)=>{
+    if (!todoMsg) return;
     if (e.key === "Enter") {      
       const newTodo = {
         todoMsg,
