@@ -61,7 +61,7 @@ function TodoList({ todo }) {
         className={`w-full h-[2rem] pr-[1.8rem] pl-[2.1rem] bg-transparent  border-b-[1px] 
          ${isTodoEditable ? "dark:border-deep-purple-400 border-black" : "border-none"}
         placeholder:text-[#727575] text-[#484b6a] dark:text-[#cacde8]  text-lg focus:outline-none overflow-hidden ${
-          todo.completed && "line-through"
+          todo.completed && "line-through dark:text-gray-700"
         } `}
       />
 
