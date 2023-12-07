@@ -22,7 +22,7 @@ function TodoList({ todo }) {
   return (
     <div
       className={`  dark:bg-card-dark bg-card-light
-				w-[500px] p-c-padding py-1 flex  items-center justify-center  rounded-t-md border-line-light
+				w-[350px] md:w-[500px] p-c-padding py-1 flex  items-center justify-center  rounded-t-md border-line-light
 				dark:border-line-dark border-b-[1px]  
 				`}>
       <div
