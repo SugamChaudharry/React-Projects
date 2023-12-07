@@ -12,12 +12,12 @@ function ThemeBtn() {
         }
     }
   return (
-    <img className='w-8'
+    <img
+      className="w-6 md:w-8"
       src={theme === "dark" ? "/images/icon-moon.svg" : "/images/icon-sun.svg"}
       alt="ThemeSwitecher"
       onClick={ThemeSwitcher}
     />
-    
   );
 }
 
