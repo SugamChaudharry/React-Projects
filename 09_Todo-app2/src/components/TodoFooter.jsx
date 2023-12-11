@@ -1,9 +1,10 @@
 import React from "react";
-import { useSelector } from "react-redux"; 
-import { showAll  , showActive , showCompleted , clearCompleted } from "../featuers/todo/todoSlice";
-function TodoFooter() {
-  const theme = useSelector((state) => state.theme);
-  const todos = useSelector((state) => state.todos);
+import { useDispatch, useSelector } from "react-redux"; 
+
+function TodoFooter({ clearAllCompleted, showAll, showActive, showCompleted }) {
+  const theme = useSelector((state) => state.theme.themes);
+  const todos = useSelector((state) => state.todos.todos);
+  const dispatch = useDispatch();
 
   const setColor = (e) => {
     e.target.parentNode.childNodes.forEach((element) => {
@@ -26,35 +27,31 @@ function TodoFooter() {
       <ul id="ul1" className="flex items-center justify-between w-[40%] cursor-pointer">
         <li
           className="dark:text-cyan-800 text-[#B83B5E]"
-
-          onClick={
-            (e) => {
-            showAll()
+          onClick={(e) => {
+            showAll();
             setColor(e);
           }}>
           All
         </li>
         <li
           className=""
-         
           onClick={(e) => {
-            showActive()
+            showActive();
             setColor(e);
           }}>
           Active
         </li>
         <li
           className=""
-        
           onClick={(e) => {
-            showCompleted()
+            showCompleted();
             setColor(e);
           }}>
           Completed
         </li>
       </ul>
 
-      <div onClick={clearCompleted}>Clear complete</div>
+      <div onClick={() => clearAllCompleted()}>Clear complete</div>
     </div>
   );
 }

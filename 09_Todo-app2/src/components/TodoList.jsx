@@ -1,9 +1,10 @@
 import React, { useState } from "react";
-import { useSelector } from "react-redux";
-import { removeTodo , updateTodo , tonggleTodo , } from "../featuers/todo/todoSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { removeTodo , updateTodo , tonggleTodo } from "../featuers/todo/todoSlice";
 
 function TodoList({ todo }) {
-  const theme = useSelector((state) => state.theme);
+  const dispatch = useDispatch();
+  const theme = useSelector((state) => state.theme.themes);
   const [isTodoEditable, setIsTodoEditable] = useState(false);
   const [text, setText] = useState(todo.text);
 
@@ -12,7 +13,7 @@ function TodoList({ todo }) {
     setIsTodoEditable(false);
   };
   const tonggleCompleted = () => {
-    tonggleTodo(todo.id);
+    dispatch(tonggleTodo(todo.id));
   };
 
   const pathData =
@@ -20,16 +21,15 @@ function TodoList({ todo }) {
 
   return (
     <div
-      className={`  dark:bg-card-dark bg-card-light
-				w-[500px] p-c-padding py-1 flex  items-center justify-center  rounded-t-md border-line-light
-				dark:border-line-dark border-b-[1px]  
+      className={`  ${theme === "dark" ? "bg-card-dark" : "bg-card-light"}
+				w-[500px] p-c-padding py-1 flex  items-center justify-center  rounded-t-md  ${
+          theme === "dark" ? "border-line-dark" : "border-line-light"
+        } border-b-[1px]  
 				`}>
       <div
         className={`${isTodoEditable ? "hidden" : "flex"} `}
         id="checkBox"
-        onClick={(e) => {
-          tonggleCompleted();
-        }}>
+        onClick={tonggleCompleted}>
         <svg width="45" height="45" viewBox="0 0 95 95">
           <rect
             x="20"
@@ -59,7 +59,7 @@ function TodoList({ todo }) {
         readOnly={!isTodoEditable}
         className={`w-full h-[2rem] pr-[1.8rem] pl-[2.1rem] bg-transparent  border-b-[1px] 
          ${isTodoEditable ? "dark:border-deep-purple-400 border-black" : "border-none"}
-        placeholder:text-[#727575] text-[#484b6a] dark:text-[#cacde8]  text-lg focus:outline-none overflow-hidden ${
+        placeholder:text-[#727575] ${ theme === 'dark' ? "text-[#7f84b4]" : " text-[#1a313a]"}  text-lg focus:outline-none overflow-hidden ${
           todo.completed && "line-through dark:text-gray-700"
         } `}
       />
@@ -80,7 +80,7 @@ function TodoList({ todo }) {
 
         <button
           className="inline-flex w-8 h-8 rounded-lg text-sm  border-none justify-center items-center   shrink-0"
-          onClick={() => removeTodo(todo.id)}>
+          onClick={() => dispatch(removeTodo(todo.id))}>
           ❌
         </button>
       </div>

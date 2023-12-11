@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useDispatch , useSelector } from "react-redux";
 import { addTodo } from "../featuers/todo/todoSlice";
 function TodoForm() {
-  const theme = useSelector((state) => state.theme);
+  const theme = useSelector((state) => state.theme.themes);
   const dispatch = useDispatch();
   const [todoText , setTodoText] = useState('')
 
