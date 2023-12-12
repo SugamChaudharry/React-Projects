@@ -1,4 +1,6 @@
 import Background from "./Background";
 import Foreground from "./Foreground";
+import Card from "./Card";
 
-export { Background , Foreground , Card };
+
+export { Background , Foreground , Card};
