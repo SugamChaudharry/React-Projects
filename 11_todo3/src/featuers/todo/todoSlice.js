@@ -1,11 +1,11 @@
 import { createSlice, nanoid } from "@reduxjs/toolkit";
 
 const initialState = {
-  todos: JSON.parse(localStorage.getItem("todos")) || [
+  todos: JSON.parse(localStorage.getItem("todo2")) || [
     {
       id: 1,
-      text: "todo1",
-      completed: false,
+      heading: "",
+      description: "",      
     },
   ],
 };
@@ -14,10 +14,11 @@ export const todoSlice = createSlice({
   initialState,
   reducers: {
     addTodo: (state, action) => {
+      console.log('a.p' , action.payload);
       state.todos.push({
         id: nanoid(),
-        text: action.payload,
-        completed: false,
+        heading: action.payload.title,
+        description: action.payload.discription,
       });
     },
     removeTodo: (state, action) => {
@@ -27,21 +28,13 @@ export const todoSlice = createSlice({
       return {
         ...state,
         todos: state.todos.map((todo) =>
-          todo.id === action.payload.id ? { ...todo, text: action.payload } : todo
-        ),
-      };
-    },
-    tonggleTodo: (state, action) => {
-      return {
-        ...state,
-        todos: state.todos.map((todo) =>
-          todo.id === action.payload ? { ...todo, completed: !todo.completed } : todo
+          todo.id === action.payload.id ? { ...todo, heading: action.payload.heading , description: action.payload.description } : todo
         ),
       };
     },
   },
 });
 
-export const { addTodo, removeTodo, updateTodo, tonggleTodo, storedTodo } = todoSlice.actions;
+export const { addTodo, removeTodo, updateTodo, storedTodo } = todoSlice.actions;
 
 export default todoSlice.reducer;
