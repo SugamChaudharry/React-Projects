@@ -3,7 +3,9 @@ import { useState } from "react";
 
 function BGChanger() {
   let [color, setColor] = useState("olive");
+
   const rgb = ["bg-red-500", "bg-slate-500", "bg-orange-500" , "bg-green-500" , "bg-emerald-500" , "bg-teal-500" , "bg-cyan-500" , "bg-sky-500" , "bg-indigo-500" , "bg-violet-500" , "bg-purple-500" , "bg-fuchsia-500" , "bg-pink-500" , "bg-rose-500"]; 
+
   function RGBLIGHT() {
     rgb.forEach(() => {
       setInterval(() => {
@@ -12,7 +14,9 @@ function BGChanger() {
       }, 100);
     });
   }
+
   const classes = `w-full h-screen duration-200  ${color}`;
+  
   return (
     <div className={classes}>
       <div className="fixed flex flex-wrap justify-center bottom-12 inset-x-0 px-2">
